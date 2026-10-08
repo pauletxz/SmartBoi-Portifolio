@@ -1,4 +1,7 @@
 import { Activity, CircleGauge, Wheat } from "lucide-react";
+import Image from "next/image";
+import prototypeSetup from "@/assets/IMG-20261003-WA0017.jpg";
+import sensorDetail from "@/assets/IMG-20261003-WA0012.jpg";
 
 const layers = [
   {
@@ -42,6 +45,32 @@ export function PrototypeSection() {
             </article>
           ))}
         </div>
+      </div>
+      <div className="site-container prototype-gallery" aria-label="Registros do protótipo Lacta IA">
+        <figure className="prototype-photo">
+          <div className="prototype-photo-frame prototype-photo-setup">
+            <Image
+              src={prototypeSetup}
+              alt="Visor e placa do Lacta IA conectados ao notebook durante uma medição com amostra de leite."
+              fill
+              sizes="(max-width: 739px) 100vw, (max-width: 1472px) 55vw, 780px"
+              placeholder="blur"
+            />
+          </div>
+          <figcaption><span>01 / O conjunto</span>Sensor, visor e software no mesmo experimento.</figcaption>
+        </figure>
+        <figure className="prototype-photo">
+          <div className="prototype-photo-frame prototype-photo-detail">
+            <Image
+              src={sensorDetail}
+              alt="Detalhe do sensor azul dentro de um recipiente de leite, com o visor eletrônico nas mãos de uma pessoa."
+              fill
+              sizes="(max-width: 739px) 100vw, (max-width: 1472px) 40vw, 580px"
+              placeholder="blur"
+            />
+          </div>
+          <figcaption><span>02 / A medição</span>Um olhar mais próximo sobre a amostra.</figcaption>
+        </figure>
       </div>
     </section>
   );

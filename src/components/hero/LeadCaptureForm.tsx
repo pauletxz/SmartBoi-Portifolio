@@ -31,15 +31,21 @@ export function LeadCaptureForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
+        signal: AbortSignal.timeout(15000),
       });
 
-      if (!response.ok) {
-        throw new Error("Erro ao registrar os dados.");
+      const result = await response.json();
+      if (!response.ok || result.success !== true) {
+        throw new Error(response.status === 503
+          ? "O cadastro está temporariamente indisponível. Tente novamente mais tarde."
+          : "Não foi possível registrar seu contato. Confira os dados e tente novamente.");
       }
 
       setIsSuccess(true);
-    } catch {
-      setSubmitError("Nao foi possivel completar o cadastro. Tente novamente.");
+    } catch (error) {
+      setSubmitError(error instanceof Error && error.name === "Error"
+        ? error.message
+        : "Não foi possível conectar. Verifique sua conexão e tente novamente.");
     } finally {
       setIsSubmitting(false);
     }
@@ -51,13 +57,14 @@ export function LeadCaptureForm() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col items-center justify-center p-8 bg-[var(--bg-secondary)] rounded-2xl text-center border border-[var(--border-soft)] w-full max-w-md"
+        role="status"
       >
         <CheckCircle size={48} className="text-[var(--action-cta)] mb-4" />
         <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">
           Cadastro realizado com sucesso
         </h3>
         <p className="text-[var(--text-muted)]">
-          Nossa equipe entrará em contato pelo WhatsApp em breve.
+          Recebemos seu interesse em colaborar. Nossa equipe poderá entrar em contato pelo e-mail ou WhatsApp informado.
         </p>
       </motion.div>
     );
@@ -70,15 +77,16 @@ export function LeadCaptureForm() {
       </h3>
       
       {submitError && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-md">
+        <div role="alert" className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-md">
           {submitError}
         </div>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" aria-busy={isSubmitting}>
         <Input
           label="Nome completo"
           placeholder="Seu nome"
+          autoComplete="name"
           {...register("name")}
           error={errors.name?.message}
         />
@@ -87,6 +95,7 @@ export function LeadCaptureForm() {
           label="E-mail"
           type="email"
           placeholder="seu@email.com"
+          autoComplete="email"
           {...register("email")}
           error={errors.email?.message}
         />
@@ -95,13 +104,16 @@ export function LeadCaptureForm() {
           label="WhatsApp com DDD"
           type="tel"
           placeholder="(11) 99999-9999"
+          autoComplete="tel"
           {...register("phone")}
           error={errors.phone?.message}
         />
         
         <Input
-          label="Volume médio diário (litros)"
+          label="Volume médio diário (litros, opcional)"
           type="number"
+          min="0"
+          step="0.01"
           placeholder="Ex: 500"
           {...register("daily_liters")}
           error={errors.daily_liters?.message}

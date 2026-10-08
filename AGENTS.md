@@ -16,7 +16,7 @@ O repositório contém uma aplicação web SmartBoi, com uma página para o prod
 
 ## Tecnologias
 
-- Next.js 16 com App Router e React 19.
+- Next.js 15.5.27 com App Router e React 19 (compatibilidade com AWS Amplify Hosting).
 - TypeScript 5, com modo `strict` habilitado.
 - Tailwind CSS 4, integrado pelo PostCSS.
 - Supabase JavaScript para acesso aos dados de leads.

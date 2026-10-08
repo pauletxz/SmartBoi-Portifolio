@@ -1,19 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import { Activity } from "lucide-react";
+import Image from "next/image";
+import smartboiLogo from "@/assets/logosmartboi.svg";
 
 export function Navbar() {
   return (
     <nav className="site-nav" aria-label="Navegação principal">
       <div className="site-nav-inner">
         <Link className="brand-link" href="/" aria-label="SmartBoi, página inicial">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--action-cta)] text-[var(--bg-primary)]">
-            <Activity size={20} strokeWidth={2.5} aria-hidden="true" />
-          </div>
-          <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
-            SmartBoi
-          </span>
+          <Image src={smartboiLogo} alt="SmartBoi" width={200} height={60} className="brand-logo" />
           <StatusBadge className="ml-4 hidden sm:inline-flex">
             Lacta IA em prototipação
           </StatusBadge>
