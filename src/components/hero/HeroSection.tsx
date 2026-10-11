@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import fieldMeasurement from "@/assets/parte-inicial.png";
 import countryside from "@/assets/hero-campo.png";
 
@@ -44,7 +45,11 @@ export function HeroSection() {
           <p className="hero-lead">
             Um protótipo para tornar mais visíveis os sinais que importam na qualidade do leite e na saúde do rebanho.
           </p>
-          <a className="text-link" href="#problema">Entenda o problema <span aria-hidden="true">↓</span></a>
+          <div className="flex flex-wrap items-center gap-5">
+            <Link className="cta-button" href="/prototipo">Testar protótipo <span aria-hidden="true">→</span></Link>
+            <a className="text-link" href="#problema">Entenda o problema <span aria-hidden="true">↓</span></a>
+          </div>
+          <p className="mt-3 text-sm text-text-muted">Demonstração gratuita com dados fictícios. Sem cadastro.</p>
         </motion.div>
 
         <motion.figure

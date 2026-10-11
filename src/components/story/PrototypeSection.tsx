@@ -1,5 +1,6 @@
 import { Activity, CircleGauge, Wheat } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import prototypeSetup from "@/assets/IMG-20261003-WA0017.jpg";
 import sensorDetail from "@/assets/IMG-20261003-WA0012.jpg";
 
@@ -31,6 +32,7 @@ export function PrototypeSection() {
           <p>
             Estamos preparando o primeiro case de campo para aprender com quem acompanha o rebanho todos os dias.
           </p>
+          <Link href="/prototipo" className="nav-cta mt-6">Explorar o painel demonstrativo</Link>
         </div>
 
         <div className="prototype-layers" aria-label="Frentes investigadas pelo protótipo">

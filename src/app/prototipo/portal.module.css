@@ -1,0 +1,62 @@
+.portal { max-width: 1200px; margin: auto; padding: 28px clamp(20px, 5vw, 64px); min-height: 100vh; }
+.header, .toolbar, .actions, .footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.header { padding-bottom: 28px; border-bottom: 1px solid #d6e8de; }
+.brand { display: inline-flex; align-items: center; text-decoration: none; }
+.logo { display: block; width: clamp(140px, 24vw, 200px); height: auto; }
+.badge { background: #d6e8de; border-radius: 30px; padding: 8px 14px; font-size: 12px; font-weight: 700; }
+.login { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; padding: 80px 0; }
+.portal h1 { font-size: clamp(30px, 4vw, 48px); font-weight: 700; line-height: 1.15; margin: 16px 0 24px; letter-spacing: -.035em; }
+.portal h2 { font-size: 22px; font-weight: 700; }
+.portal p { line-height: 1.65; margin: 12px 0; }
+.eyebrow { font-size: 12px; letter-spacing: .14em; font-weight: 800; }
+.note { color: #4a5568; font-size: 14px; max-width: 650px; }
+.card { background: white; border: 1px solid #d6e8de; border-radius: 20px; padding: 28px; }
+.portal label { display: block; margin: 20px 0 8px; font-weight: 600; font-size: 14px; }
+.portal input, .portal select { background: white; border: 1px solid #a9c8bc; border-radius: 10px; padding: 12px; width: 100%; min-height: 48px; }
+.portal button { background: #123c44; color: white; padding: 12px 20px; border-radius: 10px; font-weight: 600; min-height: 48px; cursor: pointer; }
+.portal button:disabled { opacity: .55; cursor: not-allowed; }
+.portal form button { width: 100%; margin: 24px 0 16px; }
+.portal small { color: #4a5568; display: block; line-height: 1.6; }
+.portal :is(button, input, select, a):focus-visible { outline: 3px solid #26826a; outline-offset: 4px; }
+.dashboard { padding: 48px 0; }
+.account { overflow-wrap: anywhere; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 24px 0; }
+.metrics strong { font-size: 32px; }
+.tableWrap { overflow-x: auto; }
+.portal table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 20px; white-space: nowrap; }
+.portal th, .portal td { padding: 14px 16px; border-bottom: 1px solid #e5eee9; }
+.portal th { font-size: 12px; color: #4a5568; }
+.error { color: #9b2525; background: #fff1f1; padding: 12px; border-radius: 8px; }
+.footer { border-top: 1px solid #d6e8de; padding-top: 24px; font-size: 13px; color: #4a5568; }
+.footer a { text-decoration: underline; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 720px) { .login { grid-template-columns: 1fr; padding: 36px 0; gap: 28px; } .metrics { grid-template-columns: 1fr; } .card { padding: 22px; } .actions { width: 100%; } .actions button { flex: 1; } }
+
+.animalDemo { display: grid; gap: 24px; margin-top: 30px; min-width: 0; }
+.sectionHeading { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.animalGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.portal .animalButton { display: flex; align-items: center; gap: 12px; text-align: left; background: white; color: #123c44; border: 1px solid #d6e8de; padding: 18px; border-radius: 16px; }
+.portal .animalButton[aria-pressed="true"] { background: #e5f1e9; border: 2px solid #126454; padding: 17px; }
+.animalButton strong { font-size: 18px; }
+.animalAvatar { display: grid; place-items: center; width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%; background: #d6e8de; font-weight: 800; }
+.animalProfile { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 24px; background: #123c44; color: white; border-radius: 18px; }
+.animalProfile small { color: #d6e8de; }
+.milkMetrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.portal .metricButton { display: flex; flex-direction: column; gap: 12px; text-align: left; background: white; color: #123c44; border: 1px solid #d6e8de; padding: 18px; }
+.portal .metricButton[aria-pressed="true"] { box-shadow: inset 0 0 0 2px #126454; background: #edf5f0; }
+.metricButton strong { font-size: 26px; }
+.metricButton strong small { font-size: 12px; font-weight: 500; }
+.metricButton > small { font-size: 11px; font-weight: 400; }
+.periodControl { min-width: 175px; }
+.periodControl label { margin: 0 0 6px; }
+.chartSummary { display: flex; flex-wrap: wrap; gap: 20px 40px; margin: 24px 0; font-size: 13px; color: #587076; }
+.chartSummary strong { display: block; font-size: 19px; color: #123c44; margin-top: 6px; }
+.portal .compareToggle { display: flex; align-items: center; gap: 10px; font-weight: 400; }
+.portal .compareToggle input { width: 18px; min-height: 18px; height: 18px; accent-color: #126454; }
+.chartWrap { width: 100%; overflow-x: auto; }
+.historyChart { display: block; width: 100%; min-width: 500px; height: auto; }
+.chartLegend { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px; color: #126454; }
+.chartLegend span:nth-child(2) { color: #98631c; }
+.portal .daySlider { padding: 0; border: none; accent-color: #126454; cursor: pointer; }
+@media (max-width: 1000px) { .milkMetrics { grid-template-columns: repeat(3, minmax(0, 1fr)); } .animalGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 540px) { .animalGrid { grid-template-columns: 1fr; } .milkMetrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sectionHeading { align-items: stretch; } .periodControl { width: 100%; } .animalDemo .card { min-width: 0; padding: 18px; } .metricButton strong { font-size: 23px; } }

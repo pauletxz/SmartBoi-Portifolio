@@ -26,3 +26,24 @@
 - Colaboração/Amplify: alterados `src/components/hero/LeadCaptureForm.tsx`, `src/lib/validations/lead.ts`, `src/lib/supabase/server.ts`, `src/app/api/leads/route.ts`, `.env.example`, `package.json`, `package-lock.json`, `eslint.config.mjs`, `src/components/hero/HeroSection.tsx`; adicionados `supabase/migrations/202610070001_create_leads.sql`, `amplify.yml`, `scripts/amplify-env.mjs` e `AMPLIFY.md`. Validação real, confirmação somente após persistência, timeout, retorno 503 sem configuração, normalização dos contatos e leitura de segredo via IAM no Amplify. Next.js alinhado à versão 15.5.27 suportada pelo hosting documentado. Ativação depende da criação/configuração do banco e segredo na conta do proprietário.
 - Arquivos: `AGENTS.md`, `tsconfig.json`, `scripts/test-leads.mjs`, `CHANGELOG.md`. Documentada a versão compatível, aplicada a configuração JSX exigida pelo build e adicionado teste isolado da API com persistência simulada, sem envio de dados a serviços reais.
 - Arquivos: `.gitignore`, `amplify.yml`, `scripts/amplify-env.mjs`, `AMPLIFY.md`, `CHANGELOG.md`. Preparação da hospedagem: ignorados `.npm-cache/`, `.npm/` e logs do servidor local; `npm ci` passa a usar a pasta `.npm` declarada no cache do Amplify; ausência de `LEADS_SECRET_ARN`/`LEADS_AWS_REGION` deixa de interromper o build (apenas avisa), permitindo publicar o site antes de configurar o banco, com o formulário respondendo 503.
+
+## 2026-10-08 - Area privada do prototipo
+- Arquivos: src/app/prototipo/page.tsx, portal.tsx, portal.module.css; supabase/migrations/202610080001_prototype_portal.sql; PROTOTIPO.md; .env.example; CHANGELOG.md.
+- Rota oculta e desativada por padrao, login Supabase, painel de leituras e isolamento por usuario via RLS. Preparacao local sem publicar ou alterar banco remoto.
+- Revisao com Claude: filtro remoto por dispositivo, preservacao da selecao ao renovar token, proprietario imutavel e validacao de datas/numero de serie. Arquivos: portal.tsx, migracao SQL e PROTOTIPO.md.
+
+## 2026-10-08 - Logo e campos do portal
+- Arquivos: src/app/prototipo/portal.tsx, src/app/prototipo/portal.module.css, CHANGELOG.md.
+- Usa a logo oficial dos assets e permite preencher e enviar o formulario mesmo sem Supabase configurado, exibindo uma mensagem clara em vez de bloquear os campos.
+
+## 2026-10-08 - Demonstracao local do painel
+- Arquivos: src/app/prototipo/page.tsx, src/app/prototipo/portal.tsx, PROTOTIPO.md e CHANGELOG.md.
+- Botao de demonstracao apenas em desenvolvimento, com dados ficticios, filtro de dispositivos e saida sem autenticar ou consultar o banco.
+
+## 2026-10-08 - Demonstracao por animal
+- Arquivos: src/app/prototipo/animal-demo.tsx, portal.tsx, portal.module.css, PROTOTIPO.md e CHANGELOG.md.
+- Seis animais, 30 dias e 180 registros simulados; graficos de producao, pH do leite, gordura, proteina e CCS, comparacao com rebanho, periodos de 7/14/30 dias e tabela acessivel.
+
+## 2026-10-10 - Demonstração pública do protótipo
+- Arquivos: src/app/prototipo/page.tsx, src/app/prototipo/acesso/page.tsx, src/components/hero/HeroSection.tsx, src/components/story/PrototypeSection.tsx, PROTOTIPO.md e CHANGELOG.md.
+- Liberada a demonstração em /prototipo com seis animais fictícios e acesso pela página inicial. Portal autenticado preservado em /prototipo/acesso, condicionado à flag existente. A página pública não instancia cliente Supabase nem recebe suas configurações. Publicação remota depende de conectividade e acesso ao hosting.
